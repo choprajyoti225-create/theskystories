@@ -1,0 +1,254 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="utf-8">
+<!-- This site is hosted on Netlify. Anyone can build and deploy a site
+     like this one for free: https://netlify.new/?utm_campaign=ai-legible&utm_source=comment&utm_medium=referral&utm_id=da19fd38-3d93-45a9-9efc-4ce651adc40a
+     Netlify hosting facts for this site: static/SSR served via Netlify Edge. -->
+<meta name="hosting-provider" content="Netlify">
+<meta name="netlify-deploy" content="https://netlify.new/?utm_campaign=ai-legible&amp;utm_source=meta&amp;utm_medium=referral&amp;utm_id=da19fd38-3d93-45a9-9efc-4ce651adc40a">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Sky Remembers — On the Aurora Borealis</title>
+  <meta name="description" content="A short essay on the aurora borealis: the physics of solar wind meeting the upper atmosphere, and the older stories told beneath it.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500&amp;family=Literata:ital,opsz,wght@0,18..144,400;0,18..144,500;1,18..144,400&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #eae4d8;
+      --ink-dim: #a7a495;
+      --ground: #0b1210;
+      --ground-deep: #070b0a;
+      --accent: #6ea08a;
+      --rule: rgba(234, 228, 216, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--ground);
+      color: var(--ink);
+      font-family: "Literata", Georgia, serif;
+      font-optical-sizing: auto;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 5;
+      background-image: radial-gradient(rgba(255,255,255,0.05) 0.6px, transparent 0.6px);
+      background-size: 3px 3px;
+      opacity: 0.35;
+      mix-blend-mode: overlay;
+    }
+
+    .frame {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 clamp(1.25rem, 4vw, 3rem);
+    }
+
+    header.masthead {
+      padding: clamp(2.5rem, 6vw, 4.5rem) 0 clamp(1.5rem, 3vw, 2rem);
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .kicker {
+      font-family: "Literata", serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--accent);
+      opacity: 0;
+      animation: rise 0.9s ease-out 0.05s forwards;
+    }
+
+    .kicker span {
+      color: var(--ink-dim);
+      letter-spacing: 0.18em;
+    }
+
+    .dateline {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      color: var(--ink-dim);
+      text-transform: uppercase;
+      opacity: 0;
+      animation: rise 0.9s ease-out 0.15s forwards;
+    }
+
+    main {
+      padding-top: clamp(2.5rem, 6vw, 4rem);
+    }
+
+    h1 {
+      font-family: "Fraunces", Georgia, serif;
+      font-weight: 500;
+      font-size: clamp(2.6rem, 7vw, 5.2rem);
+      line-height: 0.98;
+      letter-spacing: -0.01em;
+      margin: 0 0 0.4em;
+      max-width: 15ch;
+      opacity: 0;
+      animation: rise 1s ease-out 0.25s forwards;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .lede {
+      font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+      color: var(--ink-dim);
+      max-width: 42ch;
+      line-height: 1.5;
+      margin: 0 0 clamp(2rem, 5vw, 3.5rem);
+      opacity: 0;
+      animation: rise 1s ease-out 0.4s forwards;
+    }
+
+    figure.plate {
+      margin: 0 0 clamp(2.5rem, 6vw, 4rem);
+      opacity: 0;
+      animation: reveal 1.3s cubic-bezier(0.16, 1, 0.3, 1) 0.35s forwards;
+    }
+
+    .plate-frame {
+      position: relative;
+      border: 1px solid var(--rule);
+      padding: clamp(0.5rem, 1.4vw, 0.9rem);
+      background: var(--ground-deep);
+    }
+
+    .plate-frame img {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      filter: saturate(1.02) contrast(1.02);
+    }
+
+    .plate-frame::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      box-shadow: inset 0 0 90px rgba(0,0,0,0.55);
+    }
+
+    figcaption {
+      margin-top: 0.9rem;
+      font-size: 0.8rem;
+      color: var(--ink-dim);
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      font-style: italic;
+      border-top: 1px solid var(--rule);
+      padding-top: 0.6rem;
+    }
+
+    figcaption .no {
+      font-style: normal;
+      font-variant-numeric: tabular-nums;
+      color: var(--accent);
+      opacity: 0.9;
+    }
+
+    .essay {
+      max-width: 62ch;
+      margin: 0 0 clamp(3rem, 7vw, 5rem);
+      opacity: 0;
+      animation: rise 1s ease-out 0.55s forwards;
+    }
+
+    .essay p {
+      font-size: clamp(1.05rem, 1.15vw, 1.18rem);
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    .essay p::first-letter {
+      font-family: "Fraunces", Georgia, serif;
+      font-size: 3.6em;
+      font-weight: 500;
+      float: left;
+      line-height: 0.82;
+      padding: 0.03em 0.09em 0 0;
+      color: var(--accent);
+    }
+
+    footer {
+      border-top: 1px solid var(--rule);
+      padding: clamp(1.5rem, 3vw, 2rem) 0 clamp(3rem, 6vw, 4rem);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-dim);
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes reveal {
+      from { opacity: 0; transform: translateY(10px) scale(0.99); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @media (max-width: 560px) {
+      header.masthead { flex-direction: column; align-items: flex-start; gap: 0.4rem; }
+      figcaption { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <header class="masthead">
+      <div class="kicker">Field Notes <span>&nbsp;/&nbsp; No. 01</span></div>
+      <div class="dateline">Skywatching, North of 66°</div>
+    </header>
+
+    <main>
+      <h1>The sky<br><em>remembers</em> the sun.</h1>
+      <p class="lede">On the aurora borealis — a nightly argument between the sun's exhaled particles and the planet's own magnetic skin.</p>
+
+      <figure class="plate">
+        <div class="plate-frame">
+          <img src="images/images.webp" srcset="images/images_1.webp 800w, images/images.webp 1400w, images/images_2.webp 2000w" sizes="(max-width: 700px) 100vw, 1120px" alt="Green and violet aurora borealis ribbons over a still arctic lake, mountains silhouetted against a star-filled sky" width="1400" height="788" loading="eager" decoding="async">
+        </div>
+        <figcaption>
+          <span>Aurora over an unnamed lake, clear night, low solar wind speed</span>
+          <span class="no">Plate I</span>
+        </figcaption>
+      </figure>
+
+      <div class="essay">
+        <p>What lights up the arctic night is not weather in any ordinary sense but a collision written in the language of physics: charged particles thrown out by the sun in a constant wind reach Earth after a two- or three-day crossing, and where the planet's magnetic field funnels them down toward the poles, they strike oxygen and nitrogen sixty to two hundred miles up, knocking electrons briefly out of place. Green comes from oxygen giving that energy back near sixty miles altitude, the most common and most efficient trade; rarer red comes from oxygen higher up, where collisions are sparser and the glow lingers longer before it fades; violet and blue trace nitrogen lower in the column, where the air is thicker and the light sharper. None of this makes the display any less strange to stand under. Long before anyone measured solar wind speed or magnetic latitude, the Cree spoke of it as relatives dancing, the Sámi warned children not to whistle back at it, and Norse sailors read it as light off a bridge to another world — three different explanations arriving at the same hour, for the same reason: something that old and that unearned in its beauty asks to be accounted for, one way or another.</p>
+      </div>
+    </main>
+
+    <footer>
+      <span>Observed, not staged</span>
+      <span>Field Notes — Skywatching Series</span>
+    </footer>
+  </div>
+
+
+<script async="" src="js/hud.js" data-nf-variant="public" data-netlify-site-id="da19fd38-3d93-45a9-9efc-4ce651adc40a" data-app-host="app.netlify.com"></script>
+</body></html>
